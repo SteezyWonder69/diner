@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Diner</title>
+</head>
+<body>
+
+<h1>Welcome to my Diner!</h1>
+<h2>This is the Menu:</h2>
+<div>(1) Chicken Sandwich: $5<br>(2) Spicy CS: $6<br>(3/4) Nuggets 8/12: $5/$6<br>(5/6) Strips 4/6: $5/$6<br>(7/8) Fried Nuggets 6/10: $5/$6<br>(9) Chicken Salad: $6</div>
+<h2>Here are the Sides:</h2>
+<div>(10) Fries: $2<br>(11) Mac&Cheese: $3<br>(12) Coleslaw: $2</div>
+<h2>Drinks:</h2>
+<div>(13) Fountain Drinks: $2(free refills)<br>(14) Water cup(free)</div>
+<br>
+<div></div>
+
+<button onclick="order()">Place Order (one item at a time please)</button>
+<button onclick="done(array)">Finish Order</button>
+
+<h3>Waitress:</h3>
+<div id="waitress">Hey there! Welcome to Chick Fill B.</div>
+
+</body>
+
+
+<script>
+const orderPrices = {
+    '1': 5,
+    '2': 6,
+    '3': 5,
+    '4': 6,
+    '5': 5,
+    '6': 6,
+    '7': 5,
+    '8': 6,
+    '9': 6,
+    '10': 2,
+    '11': 3,
+    '12': 2,
+    '13': 2,
+    '14': 0
+}
+var array = []
+
+const comment = (order) => {
+    if (order == '1') {
+        document.getElementById('waitress').innerHTML = ('The Chicken Sandwich is one of my favorites!')
+    } else if (order == '2') {
+        document.getElementById('waitress').innerHTML = ('That is a fine choice.')
+    } else if (order == '3') {
+        document.getElementById('waitress').innerHTML = ('Next time try the 12 count.')
+    } else if (order == '4') {
+        document.getElementById('waitress').innerHTML = ('The Nuggets are best with Fries and a Drink!')
+    } else if (order == '5') {
+        document.getElementById('waitress').innerHTML = ('The Chicken Strips are nice and tender.')
+    } else if (order == '6') {
+        document.getElementById('waitress').innerHTML = ('6 is a good number of Chicken Strips, I agree.')
+    } else if (order == '7') {
+        document.getElementById('waitress').innerHTML = ("To be honest, those aren't that great")
+    } else if (order == '8') {
+        document.getElementById('waitress').innerHTML = ("To be honest, those aren't that great")
+    } else if (order == '9') {
+        document.getElementById('waitress').innerHTML = ('Ah, the healthy option. Good choice.')
+    } else if (order == '10') {
+        document.getElementById('waitress').innerHTML = ('Fries are always a nice touch.')
+    } else if (order == '11') {
+        document.getElementById('waitress').innerHTML = ('Did you know that the MAC stands for Mac And Cheese?')
+    } else if (order == '12') {
+        document.getElementById('waitress').innerHTML = ('Ah, the healthy option. Good choice.')
+    } else if (order == '13') {
+        document.getElementById('waitress').innerHTML = ('That comes with free refills, just fyi.')
+    } else if (order == '14') {
+        document.getElementById('waitress').innerHTML = ('pfft, cheapo')
+    }
+}
+
+const order = () => {
+    const order = prompt('What would you like? (The number will do fine.)')
+    array.push(orderPrices[order])
+    comment(order)
+}
+
+const done = (arr) => {
+    const reducer = (total, element) => {
+        return total + element
+    }
+    total = arr.reduce(reducer);
+    document.getElementById('waitress').innerHTML = (`You're total is $${total}`)
+    array = []
+}
+
+
+
+</script>
+</html>
